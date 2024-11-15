@@ -1,19 +1,40 @@
 @use "../abstracts" as *;
 
 .home {
-  padding: 3rem 0;
-  min-height: 100svh;
-
   &__layout {
     min-height: calc(100svh - 6rem);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
   &__content {
-    height: fit-content;
+    position: relative;
     position: sticky;
     top: 3rem;
+    @include flex-center;
+    flex-direction: column;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: #f4f4f4;
+      z-index: -1;
+      width: 1px;
+      height: 100%;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: #f4f4f4;
+      z-index: -1;
+      width: 1px;
+      height: 100%;
+    }
   }
 }
 
@@ -43,10 +64,9 @@
     z-index: 2;
     background-color: rgba(255, 255, 255, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(1rem);
-    backdrop-filter: blur(4px);
-    padding: 0.5rem 1rem;
     border-radius: 2rem;
+    backdrop-filter: blur(1rem);
+    padding: 0.5rem 1rem;
     font-size: 0.875rem;
     font-weight: 500;
     color: $color-text;
