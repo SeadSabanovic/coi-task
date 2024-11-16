@@ -1,0 +1,144 @@
+@use "../abstracts" as *;
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap");
+
+$font-family: "Fira Sans";
+$content-height: 576px;
+
+.task1 {
+  font-family: $font-family, serif;
+
+  &-padding {
+    padding: 200svh 0;
+  }
+
+  &-section {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(1, 1fr);
+    background-color: #e3cfcf;
+    overflow: hidden;
+
+    @include responsive(tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__image {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1.25 / 1;
+
+      @include responsive(tablet) {
+        aspect-ratio: unset;
+      }
+
+      img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: $font-family, serif;
+      padding: 3.906rem 1rem;
+      height: calc-size(auto);
+
+      @include responsive(tablet) {
+        min-height: $content-height;
+        padding: 3.906rem 2rem;
+      }
+
+      @include responsive(desktop) {
+        padding: 6.5rem;
+      }
+    }
+
+    &__title {
+      margin-bottom: 1rem;
+      font-weight: 275;
+      font-size: 1.5rem;
+      line-height: 2.6rem;
+      text-transform: uppercase;
+
+      @include responsive(tablet) {
+        font-size: 2rem;
+        line-height: 2.6rem;
+      }
+    }
+
+    &__text {
+      font-family: $font-family, sans-serif;
+      font-weight: 300;
+      line-height: 20.8px;
+      font-size: 1rem;
+
+      @include responsive(tablet) {
+        font-size: 1.125rem;
+        line-height: 23.4px;
+      }
+    }
+
+    &__btn {
+      appearance: none;
+      border: inset 1px solid #000;
+      margin: 0;
+      padding: 0;
+      outline: none;
+      min-width: 110px;
+      min-height: 48px;
+      margin-top: 1.5rem;
+      background-color: transparent;
+      font-family: $font-family, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      line-height: 0.975rem;
+      cursor: pointer;
+      transition: background-color 0.2s $transition-ease,
+        color 0.2s $transition-ease;
+
+      &:hover {
+        background-color: #000;
+        color: #fff;
+      }
+
+      &:active {
+        background-color: rgba(#000, 0.8);
+      }
+
+      @include responsive(tablet) {
+        min-width: 170px;
+        font-size: 0.875rem;
+        line-height: 1.138rem;
+        min-height: 52px;
+      }
+    }
+  }
+}
+
+.back-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 0.75rem 1.5rem;
+  background-color: white;
+  color: #1f2937;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}

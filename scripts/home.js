@@ -1,8 +1,11 @@
 import gsap from "gsap";
+import barba from "@barba/core";
 
 function initImageReveal() {
   const taskImages = document.querySelectorAll(".home-tasks__task-image");
-  const imageElements = document.querySelectorAll(".home-tasks__task-image img");
+  const imageElements = document.querySelectorAll(
+    ".home-tasks__task-image img"
+  );
   let loadedImages = 0;
 
   // Set initial states for all containers and images
@@ -27,7 +30,7 @@ function initImageReveal() {
           defaults: {
             ease: "power2.inOut",
           },
-          delay: index * 0.2, // Add stagger delay between each animation
+          delay: index * 0.2,
         });
 
         tl.to(container, { duration: 0, visibility: "visible" })
@@ -66,43 +69,58 @@ function initImageReveal() {
 }
 
 function initTaskHover() {
-  const tasks = document.querySelectorAll('.home-tasks__task');
+  const tasks = document.querySelectorAll(".home-tasks__task");
 
-  tasks.forEach(task => {
-    const image = task.querySelector('img');
+  tasks.forEach((task) => {
+    const image = task.querySelector("img");
     let bounds;
 
-    // Reset image position on mouse leave
-    task.addEventListener('mouseleave', () => {
+    const mouseleaveHandler = () => {
       gsap.to(image, {
         duration: 0.6,
         x: 0,
         y: 0,
-        ease: 'power3.out'
+        ease: "power3.out",
       });
-    });
+    };
 
-    // Track mouse movement and animate image
-    task.addEventListener('mousemove', (e) => {
+    const mousemoveHandler = (e) => {
       bounds = task.getBoundingClientRect();
-      
-      // Calculate mouse position relative to task center (in percentage)
       const mouseX = (e.clientX - bounds.left) / bounds.width - 0.5;
       const mouseY = (e.clientY - bounds.top) / bounds.height - 0.5;
 
-      // Animate image position based on mouse movement
       gsap.to(image, {
         duration: 0.6,
-        x: mouseX * 30, // Multiply by desired movement amount
+        x: mouseX * 30,
         y: mouseY * 30,
-        ease: 'power3.out'
+        ease: "power3.out",
       });
-    });
+    };
+
+    task.addEventListener("mouseleave", mouseleaveHandler);
+    task.addEventListener("mousemove", mousemoveHandler);
   });
 }
 
-// Initialize when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  initImageReveal();
-  initTaskHover();
+// Initialize all home page functionality
+function initHome() {
+  // Small timeout to ensure DOM is fully ready
+  setTimeout(() => {
+    initImageReveal();
+    initTaskHover();
+  }, 100);
+}
+
+// For initial page load
+window.addEventListener("load", () => {
+  if (document.querySelector('[data-barba-namespace="home"]')) {
+    initHome();
+  }
+});
+
+// For Barba page transitions
+barba.hooks.afterEnter((data) => {
+  if (data.next.namespace === "home") {
+    initHome();
+  }
 });

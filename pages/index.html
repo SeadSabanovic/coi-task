@@ -10,10 +10,12 @@
       sizes="16x16"
       href="../assets/favicon-16x16.png"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
-  <body>
-    <div data-barba="wrapper" class="home">
-      <main data-barba="container">
+  <body class="page">
+    <div data-barba="wrapper">
+      <main data-barba="container" data-barba-namespace="home">
         <div class="container home__layout">
           <div class="home__content">
             <h1 class="heading-1">COI Test Tasks</h1>
@@ -25,7 +27,7 @@
               <span class="task-pill">Image + Text</span>
               <div class="home-tasks__task-image">
                 <div class="home-tasks__task-overlay"></div>
-                <img src="../assets/temp.png" alt="Task 1" />
+                <img src="../assets/task1.png" alt="Task 1" />
               </div>
             </a>
             <!-- Task 2 -->
@@ -34,7 +36,7 @@
               <div class="home-tasks__task-image">
                 <div class="home-tasks__task-overlay"></div>
                 <img
-                  src="https://images.pexels.com/photos/5799656/pexels-photo-5799656.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  src="https://images.pexels.com/photos/26634882/pexels-photo-26634882/free-photo-of-flowers-and-vases.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                   alt="Task 2"
                 />
               </div>
@@ -53,7 +55,7 @@
               <div class="home-tasks__task-image">
                 <div class="home-tasks__task-overlay"></div>
                 <img
-                  src="https://images.pexels.com/photos/7130465/pexels-photo-7130465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  src="https://images.pexels.com/photos/16176942/pexels-photo-16176942/free-photo-of-railing-on-yellow-wall.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                   alt="Task 4"
                 />
               </div>
@@ -63,6 +65,5 @@
       </main>
     </div>
     <script type="module" src="../scripts/main.js"></script>
-    <script type="module" src="../scripts/home.js"></script>
   </body>
 </html>
