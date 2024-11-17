@@ -4,22 +4,65 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COI - Test Tasks</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../assets/favicon-16x16.png"
+    />
   </head>
   <body>
     <div data-barba="wrapper" class="home">
-      <div class="container">
-        <div>
-          <nav>
-            <a href="/task1.html">Task 1</a>
-            <a href="/task2.html">Task 2</a>
-            <a href="/task3.html">Task 3</a>
-            <a href="/task4.html">Task 4</a>
+      <main data-barba="container">
+        <div class="container home__layout">
+          <div class="home__content">
+            <h1 class="heading-1">COI Test Tasks</h1>
+            <h3 class="heading-3">Sead Sabanovic</h3>
+          </div>
+          <nav class="home-tasks">
+            <!-- Task 1 -->
+            <a href="/task1.html" class="home-tasks__task">
+              <span class="task-pill">Image + Text</span>
+              <div class="home-tasks__task-image">
+                <div class="home-tasks__task-overlay"></div>
+                <img src="../assets/temp.png" alt="Task 1" />
+              </div>
+            </a>
+            <!-- Task 2 -->
+            <a href="/task2.html" class="home-tasks__task">
+              <span class="task-pill">Blog Showcase</span>
+              <div class="home-tasks__task-image">
+                <div class="home-tasks__task-overlay"></div>
+                <img
+                  src="https://images.pexels.com/photos/5799656/pexels-photo-5799656.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt="Task 2"
+                />
+              </div>
+            </a>
+            <!-- Task 3 -->
+            <a href="/task3.html" class="home-tasks__task">
+              <span class="task-pill">Swiper Section</span>
+              <div class="home-tasks__task-image">
+                <div class="home-tasks__task-overlay"></div>
+                <img src="../assets/swiper.png" alt="Task 3" />
+              </div>
+            </a>
+            <!-- Task 4 -->
+            <a href="/task4.html" class="home-tasks__task">
+              <span class="task-pill">Shopify Scheme</span>
+              <div class="home-tasks__task-image">
+                <div class="home-tasks__task-overlay"></div>
+                <img
+                  src="https://images.pexels.com/photos/7130465/pexels-photo-7130465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt="Task 4"
+                />
+              </div>
+            </a>
           </nav>
         </div>
-        <h2>Welcome to my test tasks</h2>
-      </div>
-      <main data-barba="container">Home</main>
+      </main>
     </div>
     <script type="module" src="../scripts/main.js"></script>
+    <script type="module" src="../scripts/home.js"></script>
   </body>
 </html>
