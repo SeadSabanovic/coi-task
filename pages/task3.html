@@ -9,12 +9,29 @@
   </head>
   <body>
     <div data-barba="wrapper">
-      <div class="container">
-        <nav>
-          <a href="/index.html">Home</a>
-        </nav>
-      </div>
-      <main data-barba="container" data-barba-namespace="task3">Task 3</main>
+      <div class="container"></div>
+      <main data-barba="container" data-barba-namespace="task3">
+        Task 3
+
+        <!-- Back to Home Button -->
+        <a href="/" class="button button--back-home">
+          <span class="button__title">HOME</span>
+          <div class="button__icon">
+            <svg
+              class="button__icon-svg"
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            >
+              <path
+                d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"
+              />
+            </svg>
+          </div>
+        </a>
+      </main>
     </div>
     <script type="module" src="../scripts/main.js"></script>
   </body>
