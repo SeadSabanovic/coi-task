@@ -2,11 +2,42 @@ import "../styles/app.scss";
 import barba from "@barba/core";
 import gsap from "gsap";
 
+// Function to animate the button--back-home element
+function animateBackHomeButton(action) {
+  const backHomeButton = document.querySelector('.button--back-home');
+  if (backHomeButton) {
+    const animationProps = {
+      opacity: action === 'in' ? 1 : 0,
+      y: action === 'in' ? 0 : -20,
+      duration: 0.5,
+      ease: "power2.inOut",
+    };
+
+    if (action === 'out') {
+      return new Promise((resolve) => {
+        gsap.to(backHomeButton, {
+          ...animationProps,
+          onComplete: () => {
+            backHomeButton.remove();
+            resolve();
+          },
+        });
+      });
+    } else {
+      gsap.fromTo(backHomeButton, { opacity: 0, y: -20 }, animationProps);
+    }
+  }
+  return Promise.resolve();
+}
+
 barba.init({
   transitions: [
     {
       name: "default-transition",
       sync: false,
+      beforeLeave(data) {
+        return animateBackHomeButton('out');
+      },
       leave(data) {
         const done = this.async();
 
@@ -26,7 +57,9 @@ barba.init({
 
         // Load page-specific scripts based on namespace
         const namespace = data.next.namespace;
-        loadPageScript(namespace);
+        if (namespace !== 'task2') {
+          loadPageScript(namespace);
+        }
 
         gsap.set(data.next.container, {
           opacity: 0,
@@ -42,6 +75,8 @@ barba.init({
             gsap.set(data.next.container, {
               clearProps: "transform",
             });
+
+            animateBackHomeButton('in');
             done();
           },
         });
@@ -72,3 +107,6 @@ function loadPageScript(namespace) {
 const initialNamespace = document.querySelector('[data-barba="container"]')
   .dataset.barbaNamespace;
 loadPageScript(initialNamespace);
+
+// Animate the button--back-home element on initial load
+animateBackHomeButton('in');

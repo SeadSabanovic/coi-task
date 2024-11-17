@@ -15,7 +15,116 @@
   </head>
   <body class="page">
     <div data-barba="wrapper">
-      <main data-barba="container" data-barba-namespace="task2">Task 2</main>
+      <main data-barba="container" data-barba-namespace="task2">
+        <section class="recipes">
+          <h2 class="recipes__title">OUR RECIPES</h2>
+          <p class="recipes__subtitle">
+            Great on its own or as a mixer. Fun cocktail & mocktail recipes to
+            try.
+          </p>
+          <a href="#" class="recipes__view-all">VIEW ALL RECIPES</a>
+
+          <div class="recipes__grid">
+            <!-- Recipe Card 1 -->
+            <div class="recipe-card">
+              <div class="recipe-card__image-wrapper">
+                <img
+                  src="../assets/task2/mocktail-1.png"
+                  alt="Image of Sparkling Triple Citrus & Mint Mocktail"
+                  class="recipe-card__image"
+                />
+                <picture>
+                  <source
+                    media="(min-width:768px)"
+                    srcset="../assets/task2/decorations/decoration-1-lg.png"
+                  />
+                  <img
+                    src="../assets/task2/decorations/decoration-1.png"
+                    alt="Top left lemon decoration"
+                    class="recipe-card__decoration recipe-card__decoration--tl"
+                  />
+                </picture>
+              </div>
+              <h3 class="recipe-card__title">
+                SPARKLING TRIPLE CITRUS & MINT MOCKTAIL
+              </h3>
+            </div>
+
+            <!-- Recipe Card 2 -->
+            <div class="recipe-card">
+              <div class="recipe-card__image-wrapper">
+                <img
+                  src="../assets/task2/mocktail-2.png"
+                  alt="Image of Sparkling Triple Citrus & Mint Mocktail with decorations"
+                  class="recipe-card__image"
+                />
+                <picture>
+                  <source
+                    media="(min-width:768px)"
+                    srcset="../assets/task2/decorations/decoration-2-lg.png"
+                  />
+                  <img
+                    src="../assets/task2/decorations/decoration-2.png"
+                    alt="Second decoration"
+                    class="recipe-card__decoration recipe-card__decoration--tr"
+                  />
+                </picture>
+                <img
+                  src="../assets/task2/decorations/decoration-3.png"
+                  alt="Bottom left lemon decoration"
+                  class="recipe-card__decoration recipe-card__decoration--bl"
+                />
+              </div>
+              <h3 class="recipe-card__title">
+                SPARKLING TRIPLE CITRUS & MINT MOCKTAIL
+              </h3>
+            </div>
+
+            <!-- Recipe Card 3 -->
+            <div class="recipe-card">
+              <div class="recipe-card__image-wrapper">
+                <img
+                  src="../assets/task2/mocktail-3-sm.png"
+                  srcset="
+                    ../assets/task2/mocktail-3-sm.png 400w,
+                    ../assets/task2/mocktail-3-lg.png 800w
+                  "
+                  sizes="(max-width: 768px) 400px,
+                         360px"
+                  alt="Image of Sparkling Triple Citrus & Mint Mocktail with bottom right decoration"
+                  class="recipe-card__image"
+                />
+                <img
+                  src="../assets/task2/decorations/decoration-4.png"
+                  alt="Bottom right lemon decoration"
+                  class="recipe-card__decoration recipe-card__decoration--br"
+                />
+              </div>
+              <h3 class="recipe-card__title">
+                SPARKLING TRIPLE CITRUS & MINT MOCKTAIL
+              </h3>
+            </div>
+          </div>
+        </section>
+        <!-- Back to Home Button -->
+        <a href="/" class="button button--back-home">
+          <span class="button__title">HOME</span>
+          <div class="button__icon">
+            <svg
+              class="button__icon-svg"
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            >
+              <path
+                d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"
+              />
+            </svg>
+          </div>
+        </a>
+      </main>
     </div>
     <script type="module" src="../scripts/main.js"></script>
   </body>
