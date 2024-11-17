@@ -32,3 +32,8 @@ textarea,
 select {
   font: inherit;
 }
+
+* {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}

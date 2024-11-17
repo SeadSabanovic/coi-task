@@ -12,12 +12,15 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
   </head>
-  <body>
+  <body class="page">
     <div data-barba="wrapper">
-      <div class="container"></div>
       <main data-barba="container" data-barba-namespace="task3">
-        Task 3
+        <gallery-carousel class="gallery"></gallery-carousel>
 
         <!-- Back to Home Button -->
         <a href="/" class="button button--back-home">
@@ -39,6 +42,7 @@
         </a>
       </main>
     </div>
+
     <script type="module" src="../scripts/main.js"></script>
   </body>
 </html>
