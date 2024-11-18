@@ -22,8 +22,6 @@ npm install
 npm run dev
 ```
 
-The site will be available at `http://localhost:5173`
-
 ## Task 1: Image + Text Component
 
 An interactive feature block with animated content transitions.
