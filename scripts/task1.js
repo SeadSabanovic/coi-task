@@ -1,18 +1,35 @@
 import gsap from "gsap";
+import { debounce } from "lodash";
+import barba from "@barba/core";
+
+function initScrollAnimation() {
+  gsap.set(".task1-scroll", { opacity: 0 }); // Reset initial state
+  gsap.to(".task1-scroll", {
+    opacity: 1,
+    y: 20,
+    duration: 1.5,
+    ease: "power2.inOut",
+    repeat: -1,
+    yoyo: true,
+  });
+}
 
 function initTask1() {
-  const section = document.querySelector(".task1-section");
-  const image = section.querySelector(".task1-section__image");
-  const title = section.querySelector(".task1-section__title");
-  const text = section.querySelector(".task1-section__text");
-  const button = section.querySelector(".task1-section__btn");
-  const content = section.querySelector(".task1-section__content");
+  const section = document.querySelector(".feature-block");
+  const image = section.querySelector(".feature-block__media");
+  const title = section.querySelector(".feature-block__heading");
+  const text = section.querySelector(".feature-block__description");
+  const button = section.querySelector(".feature-block__cta");
+  const content = section.querySelector(".feature-block__content");
+
+  // Initialize scroll animation
+  initScrollAnimation();
 
   // Array of content to cycle through
   const contents = [
     {
       title: "Handcrafted and Responsibly Sourced",
-      text: "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue.",
+      text: "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.",
     },
     {
       title: "Sustainably Made with Care",
@@ -25,41 +42,46 @@ function initTask1() {
   ];
 
   let currentIndex = 0;
+  let isFirstToggle = true;
 
   // Function to calculate padding based on viewport
   function getContentPadding() {
     const viewportWidth = window.innerWidth;
     if (viewportWidth >= 1024) {
-      // desktop
-      return 6.5 * 2 * 16; 
-      // 6.5rem * 2 (top/bottom) * 16px
+      return 6.5 * 2 * 16;
     } else if (viewportWidth >= 768) {
-      // tablet
       return 3.906 * 2 * 16;
-      // 3.906rem * 2 (top/bottom) * 16px
     } else {
-      // mobile
       return 3.906 * 2 * 16;
-      // 3.906rem * 2 (top/bottom) * 16px
     }
   }
 
-  // Function to set container height
+  // Function to set container height (only used after first toggle)
   function setHeight() {
-    const padding = getContentPadding();
-    const contentHeight =
-      title.offsetHeight + text.offsetHeight + button.offsetHeight;
-    const newHeight = contentHeight + padding;
+    if (!isFirstToggle) {
+      const padding = getContentPadding();
+      const titleMarginBottom = 16; // 1rem in pixels
+      const buttonMarginTop = 24; // 1.5rem in pixels
 
-    gsap.to(content, {
-      height: newHeight,
-      duration: 0.5,
-      ease: "power2.inOut",
-    });
+      const contentHeight =
+        title.offsetHeight +
+        titleMarginBottom +
+        text.offsetHeight +
+        buttonMarginTop +
+        button.offsetHeight;
+
+      const newHeight = contentHeight + padding;
+
+      gsap.to(content, {
+        height: newHeight,
+        duration: 0.5,
+        ease: "power2.inOut",
+      });
+    }
   }
 
   document
-    .querySelector(".task1-section__btn")
+    .querySelector(".feature-block__cta")
     .addEventListener("click", () => {
       const tl = gsap.timeline();
 
@@ -75,8 +97,18 @@ function initTask1() {
           title.textContent = contents[currentIndex].title;
           text.textContent = contents[currentIndex].text;
 
-          // After content update, set the new height
-          setHeight();
+          if (isFirstToggle) {
+            // On first toggle, set initial height without animation
+            const padding = getContentPadding();
+            const contentHeight =
+              title.offsetHeight + text.offsetHeight + button.offsetHeight;
+            const newHeight = contentHeight + padding;
+            gsap.set(content, { height: newHeight });
+            isFirstToggle = false;
+          } else {
+            // For subsequent toggles, animate
+            setHeight();
+          }
 
           // Animate in
           gsap.to([title, text, button], {
@@ -90,15 +122,8 @@ function initTask1() {
       });
     });
 
-  // Set initial height after elements are loaded
-  window.addEventListener("load", setHeight);
-
   // Handle resize events with debounce
-  let resizeTimeout;
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(setHeight, 100);
-  });
+  window.addEventListener("resize", debounce(setHeight, 100));
 
   // Initial states
   gsap.set(image, {
@@ -171,4 +196,16 @@ function initTask1() {
   observer.observe(section);
 }
 
-initTask1();
+// For initial page load
+window.addEventListener("load", () => {
+  if (document.querySelector('[data-barba-namespace="task1"]')) {
+    initTask1();
+  }
+});
+
+// Add Barba hook instead
+barba.hooks.afterEnter((data) => {
+  if (data.next.namespace === "task1") {
+    initTask1();
+  }
+});

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Task 2</title>
+    <title>COI - Task 2</title>
     <link
       rel="icon"
       type="image/png"
@@ -83,17 +83,17 @@
             <!-- Recipe Card 3 -->
             <div class="recipe-card">
               <div class="recipe-card__image-wrapper">
-                <img
-                  src="../assets/task2/mocktail-3-sm.png"
-                  srcset="
-                    ../assets/task2/mocktail-3-sm.png 400w,
-                    ../assets/task2/mocktail-3-lg.png 800w
-                  "
-                  sizes="(max-width: 768px) 400px,
-                         360px"
-                  alt="Image of Sparkling Triple Citrus & Mint Mocktail with bottom right decoration"
-                  class="recipe-card__image"
-                />
+                <picture>
+                  <source
+                    media="(min-width:768px)"
+                    srcset="../assets/task2/mocktail-3-lg.png"
+                  />
+                  <img
+                    src="../assets/task2/mocktail-3-sm.png"
+                    alt="Image of Sparkling Triple Citrus & Mint Mocktail with bottom right decoration"
+                    class="recipe-card__image"
+                  />
+                </picture>
                 <img
                   src="../assets/task2/decorations/decoration-4.png"
                   alt="Bottom right lemon decoration"
