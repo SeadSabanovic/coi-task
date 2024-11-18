@@ -47,7 +47,6 @@ export default {
         task1: "/pages/task1.html",
         task2: "/pages/task2.html",
         task3: "/pages/task3.html",
-        task4: "/pages/task4.html",
       },
     },
   },
